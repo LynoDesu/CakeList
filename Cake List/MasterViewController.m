@@ -35,12 +35,10 @@
     NSDictionary *object = self.objects[indexPath.row];
     cell.titleLabel.text = object[@"title"];
     cell.descriptionLabel.text = object[@"desc"];
- 
-    
+
     NSURL *aURL = [NSURL URLWithString:object[@"image"]];
-    NSData *data = [NSData dataWithContentsOfURL:aURL];
-    UIImage *image = [UIImage imageWithData:data];
-    [cell.cakeImageView setImage:image];
+    
+    [self downloadImage:aURL forImageView:cell.cakeImageView];
     
     return cell;
 }
@@ -66,6 +64,22 @@
     } else {
     }
     
+}
+
+- (void)downloadImage:(NSURL *)url forImageView:(UIImageView *)imageView
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+    queue:[NSOperationQueue mainQueue]
+    completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+       if ( !error )
+       {
+           UIImage *image = [[UIImage alloc] initWithData:data];
+           imageView.image = image;
+       } else {
+           NSLog(@"%@", error);
+       }
+    }];
 }
 
 @end
