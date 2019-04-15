@@ -17,6 +17,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.backgroundColor = [UIColor orangeColor];
+    self.refreshControl.tintColor = [UIColor whiteColor];
+    [self.refreshControl addTarget:self
+                            action:@selector(getData)
+                  forControlEvents:UIControlEventValueChanged];
+    
     [self getData];
 }
 
@@ -61,6 +69,7 @@
     if (!jsonError){
         self.objects = responseData;
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     } else {
     }
     
@@ -68,6 +77,7 @@
 
 - (void)downloadImage:(NSURL *)url forImageView:(UIImageView *)imageView
 {
+    imageView.alpha = 0;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [NSURLConnection sendAsynchronousRequest:request
     queue:[NSOperationQueue mainQueue]
@@ -75,7 +85,12 @@
        if ( !error )
        {
            UIImage *image = [[UIImage alloc] initWithData:data];
-           imageView.image = image;
+           [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
+               imageView.image = image;
+               imageView.alpha = 1;
+           } completion:^(BOOL finished) {
+               
+           }];
        } else {
            NSLog(@"%@", error);
        }
