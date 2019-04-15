@@ -22,10 +22,10 @@
     self.refreshControl.backgroundColor = [UIColor orangeColor];
     self.refreshControl.tintColor = [UIColor whiteColor];
     [self.refreshControl addTarget:self
-                            action:@selector(getData)
+                            action:@selector(loadCakeData)
                   forControlEvents:UIControlEventValueChanged];
     
-    [self getData];
+    [self loadCakeData];
 }
 
 #pragma mark - Table View
@@ -46,7 +46,8 @@
 
     NSURL *aURL = [NSURL URLWithString:object[@"image"]];
     
-    [self downloadImage:aURL forImageView:cell.cakeImageView];
+    //Asynchronously download cake image
+    [self downloadCakeImage:aURL forImageView:cell.cakeImageView];
     
     return cell;
 }
@@ -55,7 +56,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)getData{
+- (void)loadCakeData{
     
     NSURL *url = [NSURL URLWithString:@"https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json"];
     
@@ -71,11 +72,12 @@
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
     } else {
+        [self showErrorDialog];
     }
     
 }
 
-- (void)downloadImage:(NSURL *)url forImageView:(UIImageView *)imageView
+- (void)downloadCakeImage:(NSURL *)url forImageView:(UIImageView *)imageView
 {
     imageView.alpha = 0;
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -88,13 +90,36 @@
            [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
                imageView.image = image;
                imageView.alpha = 1;
-           } completion:^(BOOL finished) {
-               
-           }];
+           } completion:^(BOOL finished) {}];
        } else {
            NSLog(@"%@", error);
        }
     }];
+}
+
+- (void)showErrorDialog
+{
+    UIAlertController * alert = [UIAlertController
+                                 alertControllerWithTitle:@"Error"
+                                 message:@"There was a problem loading the cakes."
+                                 preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* okButton = [UIAlertAction
+                                actionWithTitle:@"OK"
+                               style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {}];
+    
+    UIAlertAction* retryButton = [UIAlertAction
+                               actionWithTitle:@"Retry"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   [self loadCakeData];
+                               }];
+    
+    [alert addAction:okButton];
+    [alert addAction:retryButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end
