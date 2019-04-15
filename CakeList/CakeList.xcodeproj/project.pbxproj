@@ -15,6 +15,7 @@
 		3B55C80D226501B300EDE9FD /* CakeListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C80C226501B300EDE9FD /* CakeListUITests.swift */; };
 		3B55C81C226503FF00EDE9FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C81A226503FF00EDE9FD /* LaunchScreen.xib */; };
 		3B55C81D226503FF00EDE9FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C81B226503FF00EDE9FD /* Main.storyboard */; };
+		3B55C8232265091F00EDE9FD /* CakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C8222265091F00EDE9FD /* CakeCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3B55C80E226501B300EDE9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B55C81A226503FF00EDE9FD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		3B55C81B226503FF00EDE9FD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3B55C8222265091F00EDE9FD /* CakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 		3B55C8212265074800EDE9FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3B55C8222265091F00EDE9FD /* CakeCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B55C7EF226501B200EDE9FD /* DetailViewController.swift in Sources */,
+				3B55C8232265091F00EDE9FD /* CakeCell.swift in Sources */,
 				3B55C7ED226501B200EDE9FD /* MasterViewController.swift in Sources */,
 				3B55C7EB226501B200EDE9FD /* AppDelegate.swift in Sources */,
 			);
