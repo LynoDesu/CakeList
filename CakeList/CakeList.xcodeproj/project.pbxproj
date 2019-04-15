@@ -10,11 +10,11 @@
 		3B55C7EB226501B200EDE9FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C7EA226501B200EDE9FD /* AppDelegate.swift */; };
 		3B55C7ED226501B200EDE9FD /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C7EC226501B200EDE9FD /* MasterViewController.swift */; };
 		3B55C7EF226501B200EDE9FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C7EE226501B200EDE9FD /* DetailViewController.swift */; };
-		3B55C7F2226501B200EDE9FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C7F0226501B200EDE9FD /* Main.storyboard */; };
 		3B55C7F4226501B300EDE9FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C7F3226501B300EDE9FD /* Assets.xcassets */; };
-		3B55C7F7226501B300EDE9FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C7F5226501B300EDE9FD /* LaunchScreen.storyboard */; };
 		3B55C802226501B300EDE9FD /* CakeListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C801226501B300EDE9FD /* CakeListTests.swift */; };
 		3B55C80D226501B300EDE9FD /* CakeListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C80C226501B300EDE9FD /* CakeListUITests.swift */; };
+		3B55C81C226503FF00EDE9FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C81A226503FF00EDE9FD /* LaunchScreen.xib */; };
+		3B55C81D226503FF00EDE9FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C81B226503FF00EDE9FD /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,9 +39,7 @@
 		3B55C7EA226501B200EDE9FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B55C7EC226501B200EDE9FD /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
 		3B55C7EE226501B200EDE9FD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		3B55C7F1226501B200EDE9FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3B55C7F3226501B300EDE9FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		3B55C7F6226501B300EDE9FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3B55C7F8226501B300EDE9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B55C7FD226501B300EDE9FD /* CakeListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CakeListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B55C801226501B300EDE9FD /* CakeListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeListTests.swift; sourceTree = "<group>"; };
@@ -49,6 +47,8 @@
 		3B55C808226501B300EDE9FD /* CakeListUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CakeListUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B55C80C226501B300EDE9FD /* CakeListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeListUITests.swift; sourceTree = "<group>"; };
 		3B55C80E226501B300EDE9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3B55C81A226503FF00EDE9FD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		3B55C81B226503FF00EDE9FD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +99,9 @@
 		3B55C7E9226501B200EDE9FD /* CakeList */ = {
 			isa = PBXGroup;
 			children = (
-				3B55C7EA226501B200EDE9FD /* AppDelegate.swift */,
-				3B55C7EC226501B200EDE9FD /* MasterViewController.swift */,
-				3B55C7EE226501B200EDE9FD /* DetailViewController.swift */,
-				3B55C7F0226501B200EDE9FD /* Main.storyboard */,
-				3B55C7F3226501B300EDE9FD /* Assets.xcassets */,
-				3B55C7F5226501B300EDE9FD /* LaunchScreen.storyboard */,
 				3B55C7F8226501B300EDE9FD /* Info.plist */,
+				3B55C81E226506E700EDE9FD /* Controllers */,
+				3B55C8202265071900EDE9FD /* SupportFiles */,
 			);
 			path = CakeList;
 			sourceTree = "<group>";
@@ -126,6 +122,34 @@
 				3B55C80E226501B300EDE9FD /* Info.plist */,
 			);
 			path = CakeListUITests;
+			sourceTree = "<group>";
+		};
+		3B55C81E226506E700EDE9FD /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3B55C7EC226501B200EDE9FD /* MasterViewController.swift */,
+				3B55C7EE226501B200EDE9FD /* DetailViewController.swift */,
+				3B55C8212265074800EDE9FD /* Views */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		3B55C8202265071900EDE9FD /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				3B55C7EA226501B200EDE9FD /* AppDelegate.swift */,
+				3B55C7F3226501B300EDE9FD /* Assets.xcassets */,
+				3B55C81A226503FF00EDE9FD /* LaunchScreen.xib */,
+				3B55C81B226503FF00EDE9FD /* Main.storyboard */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		3B55C8212265074800EDE9FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,9 +256,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B55C7F7226501B300EDE9FD /* LaunchScreen.storyboard in Resources */,
+				3B55C81C226503FF00EDE9FD /* LaunchScreen.xib in Resources */,
+				3B55C81D226503FF00EDE9FD /* Main.storyboard in Resources */,
 				3B55C7F4226501B300EDE9FD /* Assets.xcassets in Resources */,
-				3B55C7F2226501B200EDE9FD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,25 +319,6 @@
 			targetProxy = 3B55C809226501B300EDE9FD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		3B55C7F0226501B200EDE9FD /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3B55C7F1226501B200EDE9FD /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3B55C7F5226501B300EDE9FD /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3B55C7F6226501B300EDE9FD /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		3B55C80F226501B300EDE9FD /* Debug */ = {
