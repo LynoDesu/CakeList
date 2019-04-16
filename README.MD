@@ -1,3 +1,14 @@
+# Changelog:
+
+- Fixed Crash due to incorrect CellId. 
+- Improved TableCell UI by setting UIImage content mode. 
+- Repositioned and styled the title and description.
+- Moved image loading to async method to improve responsiveness
+- Added Transport Security domain exceptions to allow image loading
+- Added subtle animation to improve image loading UX
+- Added basic error handling for loading data.
+
+
 Coding Test (fictitious)
 
 
