@@ -40,6 +40,8 @@ class MasterViewController: UITableViewController {
         cell.titleLabel.text = cake.title
         cell.descriptionLabel.text = cake.desc
         
+        self.downloadImage(imageUrlString: cake.image, imageView: cell.cakeImageView)
+        
         return cell
     }
 
@@ -75,4 +77,22 @@ class MasterViewController: UITableViewController {
         }.resume()
     }
 
+    func downloadImage(imageUrlString: String, imageView: UIImageView) {
+        guard let imageUrl = URL(string: imageUrlString) else { return }
+        
+        URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            guard let data = data else { return }
+            let cakeImage = UIImage(data: data)
+            
+            //Get back to the main queue and update the imageView
+            DispatchQueue.main.async {
+                imageView.image = cakeImage
+            }
+            
+        }.resume()
+    }
 }
