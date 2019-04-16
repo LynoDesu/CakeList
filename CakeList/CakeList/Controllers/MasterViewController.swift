@@ -78,6 +78,7 @@ class MasterViewController: UITableViewController {
     }
 
     func downloadImage(imageUrlString: String, imageView: UIImageView) {
+        imageView.alpha = 0;
         guard let imageUrl = URL(string: imageUrlString) else { return }
         
         URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
@@ -91,6 +92,10 @@ class MasterViewController: UITableViewController {
             //Get back to the main queue and update the imageView
             DispatchQueue.main.async {
                 imageView.image = cakeImage
+                
+                UIView.animate(withDuration: 0.2, delay: 0.0, options: .curveEaseInOut, animations: {
+                    imageView.alpha = 1
+                }, completion: nil)
             }
             
         }.resume()
