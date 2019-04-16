@@ -10,47 +10,21 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var detailViewController: DetailViewController? = nil
-    var objects = [Any]()
+    var objects = [CakeItem]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        navigationItem.leftBarButtonItem = editButtonItem
-
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(insertNewObject(_:)))
-        navigationItem.rightBarButtonItem = addButton
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
+        
+        objects.append(CakeItem(cakeTitle: "Item 1", cakeDescription: "This is a cake....", cakeImageUrl: nil))
+        objects.append(CakeItem(cakeTitle: "Item 2", cakeDescription: "This is a cake....", cakeImageUrl: nil))
+        objects.append(CakeItem(cakeTitle: "Item 2", cakeDescription: "This is a cake....", cakeImageUrl: nil))
+        objects.append(CakeItem(cakeTitle: "Item 2", cakeDescription: "This is a cake....", cakeImageUrl: nil))
+        objects.append(CakeItem(cakeTitle: "Item 2", cakeDescription: "This is a cake....", cakeImageUrl: nil))
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
-    }
-
-    @objc
-    func insertNewObject(_ sender: Any) {
-        objects.insert(NSDate(), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: .automatic)
-    }
-
-    // MARK: - Segues
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetail" {
-            if let indexPath = tableView.indexPathForSelectedRow {
-                let object = objects[indexPath.row] as! NSDate
-                let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
-                controller.detailItem = object
-                controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
-                controller.navigationItem.leftItemsSupplementBackButton = true
-            }
-        }
     }
 
     // MARK: - Table View
@@ -64,16 +38,17 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CakeCell", for: indexPath) as! CakeCell
 
-        let object = objects[indexPath.row] as! NSDate
-        cell.textLabel!.text = object.description
+        let cake = objects[indexPath.row]
+        cell.titleLabel.text = cake.cakeTitle
+        cell.descriptionLabel.text = cake.cakeDescription
+        
         return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+        return false
     }
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

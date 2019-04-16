@@ -9,9 +9,9 @@
 import Foundation
 import UIKit
 
-struct CakeItem {
-    var cakeTitle : String
-    var cakeDescription : String
-    var cakeImage : UIImage
-}
+class CakeCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var cakeImageView: UIImageView!
+}

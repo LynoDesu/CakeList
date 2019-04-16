@@ -9,13 +9,13 @@
 /* Begin PBXBuildFile section */
 		3B55C7EB226501B200EDE9FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C7EA226501B200EDE9FD /* AppDelegate.swift */; };
 		3B55C7ED226501B200EDE9FD /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C7EC226501B200EDE9FD /* MasterViewController.swift */; };
-		3B55C7EF226501B200EDE9FD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C7EE226501B200EDE9FD /* DetailViewController.swift */; };
 		3B55C7F4226501B300EDE9FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C7F3226501B300EDE9FD /* Assets.xcassets */; };
 		3B55C802226501B300EDE9FD /* CakeListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C801226501B300EDE9FD /* CakeListTests.swift */; };
 		3B55C80D226501B300EDE9FD /* CakeListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C80C226501B300EDE9FD /* CakeListUITests.swift */; };
 		3B55C81C226503FF00EDE9FD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C81A226503FF00EDE9FD /* LaunchScreen.xib */; };
 		3B55C81D226503FF00EDE9FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B55C81B226503FF00EDE9FD /* Main.storyboard */; };
-		3B55C8232265091F00EDE9FD /* CakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C8222265091F00EDE9FD /* CakeCell.swift */; };
+		3B55C8292266816B00EDE9FD /* CakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C8282266816B00EDE9FD /* CakeCell.swift */; };
+		3B55C82C2266889B00EDE9FD /* CakeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B55C82B2266889B00EDE9FD /* CakeItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +39,6 @@
 		3B55C7E7226501B200EDE9FD /* CakeList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CakeList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B55C7EA226501B200EDE9FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3B55C7EC226501B200EDE9FD /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		3B55C7EE226501B200EDE9FD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		3B55C7F3226501B300EDE9FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3B55C7F8226501B300EDE9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B55C7FD226501B300EDE9FD /* CakeListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CakeListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,7 +49,8 @@
 		3B55C80E226501B300EDE9FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3B55C81A226503FF00EDE9FD /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		3B55C81B226503FF00EDE9FD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		3B55C8222265091F00EDE9FD /* CakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeCell.swift; sourceTree = "<group>"; };
+		3B55C8282266816B00EDE9FD /* CakeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CakeCell.swift; sourceTree = "<group>"; };
+		3B55C82B2266889B00EDE9FD /* CakeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CakeItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				3B55C7F8226501B300EDE9FD /* Info.plist */,
+				3B55C82A2266887C00EDE9FD /* Models */,
 				3B55C81E226506E700EDE9FD /* Controllers */,
 				3B55C8202265071900EDE9FD /* SupportFiles */,
 			);
@@ -130,7 +131,6 @@
 			isa = PBXGroup;
 			children = (
 				3B55C7EC226501B200EDE9FD /* MasterViewController.swift */,
-				3B55C7EE226501B200EDE9FD /* DetailViewController.swift */,
 				3B55C8212265074800EDE9FD /* Views */,
 			);
 			path = Controllers;
@@ -150,9 +150,17 @@
 		3B55C8212265074800EDE9FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				3B55C8222265091F00EDE9FD /* CakeCell.swift */,
+				3B55C8282266816B00EDE9FD /* CakeCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		3B55C82A2266887C00EDE9FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3B55C82B2266889B00EDE9FD /* CakeItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,10 +294,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B55C7EF226501B200EDE9FD /* DetailViewController.swift in Sources */,
-				3B55C8232265091F00EDE9FD /* CakeCell.swift in Sources */,
+				3B55C82C2266889B00EDE9FD /* CakeItem.swift in Sources */,
 				3B55C7ED226501B200EDE9FD /* MasterViewController.swift in Sources */,
 				3B55C7EB226501B200EDE9FD /* AppDelegate.swift in Sources */,
+				3B55C8292266816B00EDE9FD /* CakeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
