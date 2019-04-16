@@ -10,17 +10,13 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var objects = [CakeItem]()
+    var cakes = [CakeItem]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        objects.append(CakeItem(cakeTitle: "Item 1", cakeDescription: "This is a cake....", cakeImageUrl: nil))
-        objects.append(CakeItem(cakeTitle: "Item 2", cakeDescription: "This is a cake....", cakeImageUrl: nil))
-        objects.append(CakeItem(cakeTitle: "Item 2", cakeDescription: "This is a cake....", cakeImageUrl: nil))
-        objects.append(CakeItem(cakeTitle: "Item 2", cakeDescription: "This is a cake....", cakeImageUrl: nil))
-        objects.append(CakeItem(cakeTitle: "Item 2", cakeDescription: "This is a cake....", cakeImageUrl: nil))
+        self.getCakes()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -34,15 +30,15 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return cakes.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CakeCell", for: indexPath) as! CakeCell
 
-        let cake = objects[indexPath.row]
-        cell.titleLabel.text = cake.cakeTitle
-        cell.descriptionLabel.text = cake.cakeDescription
+        let cake = cakes[indexPath.row]
+        cell.titleLabel.text = cake.title
+        cell.descriptionLabel.text = cake.desc
         
         return cell
     }
@@ -51,15 +47,32 @@ class MasterViewController: UITableViewController {
         return false
     }
 
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            objects.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-        }
+    func getCakes() {
+        let urlString = "https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json"
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            guard let data = data else { return }
+            	
+            do {
+                //Decode retrived data with JSONDecoder and assing type of CakeItem object
+                let cakeData = try JSONDecoder().decode([CakeItem].self, from: data)
+                
+                //Get back to the main queue and update the tableView with cakes
+                DispatchQueue.main.async {
+                    self.cakes = cakeData
+                    self.tableView?.reloadData()
+                }
+                
+            } catch let jsonError {
+                print(jsonError)
+            }
+
+        }.resume()
     }
 
-
 }
-

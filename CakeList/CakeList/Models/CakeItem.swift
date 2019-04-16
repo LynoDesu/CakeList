@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct CakeItem {
-    var cakeTitle : String
-    var cakeDescription : String
-    var cakeImageUrl : String?
+struct CakeItem: Codable {
+    var title : String
+    var desc : String
+    var image : String
 }
