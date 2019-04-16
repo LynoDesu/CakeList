@@ -16,6 +16,7 @@ class MasterViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupRefreshControl();
         self.getCakes()
     }
 
@@ -48,6 +49,14 @@ class MasterViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    @objc private func refreshCakeData(_ sender: Any) {
+        getCakes()
+    }
 
     func getCakes() {
         let urlString = "https://gist.githubusercontent.com/hart88/198f29ec5114a3ec3460/raw/8dd19a88f9b8d24c23d9960f3300d0c917a4f07c/cake.json"
@@ -68,6 +77,7 @@ class MasterViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self.cakes = cakeData
                     self.tableView?.reloadData()
+                    self.refreshControl?.endRefreshing()
                 }
                 
             } catch let jsonError {
@@ -99,5 +109,12 @@ class MasterViewController: UITableViewController {
             }
             
         }.resume()
+    }
+    
+    func setupRefreshControl() {
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl?.backgroundColor = .orange
+        self.refreshControl?.tintColor = .white
+        self.refreshControl?.addTarget(self, action: #selector(refreshCakeData(_:)), for: .valueChanged)
     }
 }
